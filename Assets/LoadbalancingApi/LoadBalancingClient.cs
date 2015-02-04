@@ -1786,7 +1786,8 @@ namespace ExitGames.Client.Photon.LoadBalancing
                     {
                         this.RoomInfoList = new Dictionary<string, RoomInfo>();
                     }
-				UnityEngine.Debug.Log("hello");
+
+					UnityEngine.Debug.Log("OnEvent");
 
                     Hashtable games = (Hashtable)photonEvent[ParameterCode.GameList];
                     foreach (string gameName in games.Keys)

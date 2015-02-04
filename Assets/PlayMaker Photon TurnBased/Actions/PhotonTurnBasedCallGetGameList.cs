@@ -6,23 +6,41 @@ using System.Collections.Generic;
 
 using ExitGames.Client.Photon.LoadBalancing;
 
+using HutongGames.PlayMaker.Photon.TurnBased;
+
 namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory("Photon")]
 	[Tooltip("Call the TurnBased Cloud Server webhook 'GetGameList' to return the current list of saved games. This is an asynchronous operation.")]
 	//[HelpUrl("https://hutonggames.fogbugz.com/default.asp?W1107")]
-	public class PhotonTurnBasedCallGetGamesList : FsmStateAction
+	public class PhotonTurnBasedCallGetGameList : FsmStateAction
 	{
+		[Tooltip("The list of game id")]
 		[UIHint(UIHint.Variable)]
 		[ArrayEditorAttribute(VariableType.String)]
-		public FsmArray gameList;
+		public FsmArray gameIdList;
 
-		[RequiredField]
-		public FsmEvent gameListAvailable;
-		
+		[Tooltip("The list of PlayerId/ActorNumber")]
+		[UIHint(UIHint.Variable)]
+		[ArrayEditorAttribute(VariableType.Int)]
+		public FsmArray ActorNrList;
+
+		[Tooltip("The number of games returned")]
+		[UIHint(UIHint.Variable)]
+		public FsmInt gameCount;
+
+		[Tooltip("Event sent when gameList is received but list is empty. This event will be sent first, and then gameListReceivedEvent will be sent")]
+		public FsmEvent gameListEmptyEvent;
+
+		[Tooltip("Event sent when gameList is received")]
+		public FsmEvent gameListReceivedEvent;
+
 		public override void Reset()
 		{
-			gameListAvailable = null;
+			gameIdList = null;
+			ActorNrList = null;
+			gameCount = null;
+			gameListReceivedEvent = null;
 		}
 
 		public override void OnEnter()
@@ -46,34 +64,41 @@ namespace HutongGames.PlayMaker.Actions
 		{
 			Debug.Log("OnGameListReceived");
 
-			if (!gameList.IsNone)
+			Dictionary<string, GameDescription> _list = PlayMakerPhotonLoadBalancingClientProxy.instance.LbcInstance.SavedGames;
+
+			int count = _list.Count;
+
+			string[] _keys = new string[count];
+			object[] ActorNrs = new object[count];
+
+			int i = 0;
+			foreach(KeyValuePair<string, GameDescription> _item in _list)
 			{
-				gameList.Reset();
-
-				Dictionary<string, int> _list = PlayMakerPhotonLoadBalancingClientProxy.instance.LbcInstance.SavedGames;
-
-				gameList.Resize(_list.Count);
-
-				string[] _keys = new string[_list.Count];
-
-				int i = 0;
-				foreach(KeyValuePair<string, int> _item in _list)
-				{
-					_keys[i] = _item.Key;
-					 
-					UnityEngine.Debug.Log(_item.Key);
-
-					//int savedActorNumber = _item["ActorNr"];
-
-					i++;
-				}
-
-				gameList.RawValue = _keys;
+				_keys[i] = _item.Key;
+				ActorNrs[i] = (object)_item.Value.ActorNr;
+				i++;
 			}
 
 
+			if (!gameIdList.IsNone)
+			{
+				gameIdList.Values = _keys;
+			}
 
-			Fsm.Event(gameListAvailable);
+			if (!ActorNrList.IsNone)
+			{
+				ActorNrList.Values = ActorNrs;
+			}
+			
+
+			gameCount.Value = count;
+
+			if (count==0)
+			{
+				Fsm.Event(gameListEmptyEvent);
+			}
+
+			Fsm.Event(gameListReceivedEvent);
 			Finish();
 		}
 		

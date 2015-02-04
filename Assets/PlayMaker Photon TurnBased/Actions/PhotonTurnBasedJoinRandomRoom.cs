@@ -7,6 +7,8 @@ using ExitGames.Client.Photon.LoadBalancing;
 
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
+using HutongGames.PlayMaker.Photon.TurnBased;
+
 namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory("Photon")]

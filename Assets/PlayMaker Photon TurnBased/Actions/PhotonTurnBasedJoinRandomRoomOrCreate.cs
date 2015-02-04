@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using ExitGames.Client.Photon.LoadBalancing;
 
+using HutongGames.PlayMaker.Photon.TurnBased;
+
 namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory("Photon")]

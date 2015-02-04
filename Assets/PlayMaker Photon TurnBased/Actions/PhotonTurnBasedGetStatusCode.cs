@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using ExitGames.Client.Photon;
 
+using HutongGames.PlayMaker.Photon.TurnBased;
 
 namespace HutongGames.PlayMaker.Actions
 {

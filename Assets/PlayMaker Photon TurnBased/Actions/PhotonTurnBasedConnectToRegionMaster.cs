@@ -2,6 +2,9 @@
 
 using UnityEngine;
 using System;
+
+using HutongGames.PlayMaker.Photon.TurnBased;
+
 namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory("Photon")]

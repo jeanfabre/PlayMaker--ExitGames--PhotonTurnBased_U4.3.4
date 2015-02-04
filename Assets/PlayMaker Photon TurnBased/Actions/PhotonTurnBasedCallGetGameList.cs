@@ -61,12 +61,14 @@ namespace HutongGames.PlayMaker.Actions
 				{
 					_keys[i] = _item.Key;
 					 
+					UnityEngine.Debug.Log(_item.Key);
+
 					//int savedActorNumber = _item["ActorNr"];
 
 					i++;
 				}
 
-				gameList.stringValues = _keys;
+				gameList.RawValue = _keys;
 			}
 
 

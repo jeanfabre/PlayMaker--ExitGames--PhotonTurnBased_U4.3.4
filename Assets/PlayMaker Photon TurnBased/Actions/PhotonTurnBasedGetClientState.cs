@@ -1,0 +1,50 @@
+﻿// (c) Copyright HutongGames, LLC 2010-2015. All rights reserved.
+
+using UnityEngine;
+using System;
+using System.Collections.Generic;
+
+using ExitGames.Client.Photon.LoadBalancing;
+
+namespace HutongGames.PlayMaker.Actions
+{
+	[ActionCategory("Photon")]
+	[Tooltip("Current state this client is in. Careful: several states are 'transitions' that lead to other states.")]
+	//[HelpUrl("https://hutonggames.fogbugz.com/default.asp?W1107")]
+	public class PhotonTurnBasedGetClientState : FsmStateAction
+	{
+		[RequiredField]
+		[UIHint(UIHint.Variable)]
+		[ObjectType(typeof(ClientState))]
+		public FsmEnum clientState;
+
+		public bool everyFrame;
+
+		public override void Reset()
+		{
+			clientState = ClientState.Uninitialized;
+			everyFrame=false;
+
+		}
+		
+		public override void OnEnter()
+		{
+			getProperty();
+
+			if(!everyFrame)
+			{
+				Finish();
+			}
+		}
+		public override void OnUpdate()
+		{
+			getProperty();
+	
+		}
+
+		void getProperty()
+		{
+			clientState.Value = PlayMakerPhotonLoadBalancingClientProxy.instance.LbcInstance.State;
+		}
+	}
+}

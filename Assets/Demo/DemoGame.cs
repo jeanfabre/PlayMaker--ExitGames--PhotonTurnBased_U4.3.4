@@ -63,7 +63,7 @@ public class DemoGame : LoadBalancingClient
             case (byte)OperationCode.JoinRandomGame:
                 if (operationResponse.ReturnCode == ErrorCode.NoRandomMatchFound)
                 {
-                    // no room found: we create one!
+                    Debug.Log("no room found: we create one!");
                     this.CreateTurnbasedRoom();
                 }
                 break;

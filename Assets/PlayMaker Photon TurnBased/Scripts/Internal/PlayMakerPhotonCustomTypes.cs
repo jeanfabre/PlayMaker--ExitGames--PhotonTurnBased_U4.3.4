@@ -7,6 +7,8 @@
 // </summary>
 // <author>developer@exitgames.com</author>
 // ----------------------------------------------------------------------------
+// Duplicated to prevent clash and provide a separated context
+
 using System;
 using System.IO;
 using ExitGames.Client.Photon;
@@ -14,96 +16,99 @@ using UnityEngine;
 
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
-public static class PlayMakerPhotonCustomTypes
+namespace HutongGames.PlayMaker.Photon
 {
-	
-	public static void Register()
+	public static class CustomTypes
 	{
-		PhotonPeer.RegisterType(typeof(Vector2), (byte)'W', SerializeVector2, DeserializeVector2);
-		PhotonPeer.RegisterType(typeof(Vector3), (byte)'V', SerializeVector3, DeserializeVector3);
-		PhotonPeer.RegisterType(typeof(Transform), (byte)'T', SerializeTransform, DeserializeTransform);
-		PhotonPeer.RegisterType(typeof(Quaternion), (byte)'Q', SerializeQuaternion, DeserializeQuaternion);
-	}
-	
-	#region Custom De/Serializer Methods
-	
-	private static byte[] SerializeTransform(object customobject)
-	{
-		Transform t = (Transform)customobject;
 		
-		Vector3[] parts = new Vector3[2];
-		parts[0] = t.position;
-		parts[1] = t.eulerAngles;
+		public static void Register()
+		{
+			PhotonPeer.RegisterType(typeof(Vector2), (byte)'W', SerializeVector2, DeserializeVector2);
+			PhotonPeer.RegisterType(typeof(Vector3), (byte)'V', SerializeVector3, DeserializeVector3);
+			PhotonPeer.RegisterType(typeof(Transform), (byte)'T', SerializeTransform, DeserializeTransform);
+			PhotonPeer.RegisterType(typeof(Quaternion), (byte)'Q', SerializeQuaternion, DeserializeQuaternion);
+		}
 		
-		return Protocol.Serialize(parts);
-	}
-	
-	private static object DeserializeTransform(byte[] serializedcustomobject)
-	{
-		object x = Protocol.Deserialize(serializedcustomobject);
-		return x;
-	}
-	
-	private static byte[] SerializeVector3(object customobject)
-	{
-		Vector3 vo = (Vector3)customobject;
-		MemoryStream ms = new MemoryStream(3 * 4);
+		#region Custom De/Serializer Methods
 		
-		ms.Write(BitConverter.GetBytes(vo.x), 0, 4);
-		ms.Write(BitConverter.GetBytes(vo.y), 0, 4);
-		ms.Write(BitConverter.GetBytes(vo.z), 0, 4);
-		return ms.ToArray();
-	}
-	
-	private static object DeserializeVector3(byte[] bytes)
-	{
-		Vector3 vo = new Vector3();
-		vo.x = BitConverter.ToSingle(bytes, 0);
-		vo.y = BitConverter.ToSingle(bytes, 4);
-		vo.z = BitConverter.ToSingle(bytes, 8);
+		private static byte[] SerializeTransform(object customobject)
+		{
+			Transform t = (Transform)customobject;
+			
+			Vector3[] parts = new Vector3[2];
+			parts[0] = t.position;
+			parts[1] = t.eulerAngles;
+			
+			return Protocol.Serialize(parts);
+		}
 		
-		return vo;
-	}
-	
-	private static byte[] SerializeVector2(object customobject)
-	{
-		Vector2 vo = (Vector2)customobject;
-		MemoryStream ms = new MemoryStream(2 * 4);
+		private static object DeserializeTransform(byte[] serializedcustomobject)
+		{
+			object x = Protocol.Deserialize(serializedcustomobject);
+			return x;
+		}
 		
-		ms.Write(BitConverter.GetBytes(vo.x), 0, 4);
-		ms.Write(BitConverter.GetBytes(vo.y), 0, 4);
-		return ms.ToArray();
-	}
-	
-	private static object DeserializeVector2(byte[] bytes)
-	{
-		Vector2 vo = new Vector2();
-		vo.x = BitConverter.ToSingle(bytes, 0);
-		vo.y = BitConverter.ToSingle(bytes, 4);
-		return vo;
-	}
-	public static byte[] SerializeQuaternion(object obj)
-	{
-		Quaternion o = (Quaternion)obj;
-		MemoryStream ms = new MemoryStream(3 * 4);
+		private static byte[] SerializeVector3(object customobject)
+		{
+			Vector3 vo = (Vector3)customobject;
+			MemoryStream ms = new MemoryStream(3 * 4);
+			
+			ms.Write(BitConverter.GetBytes(vo.x), 0, 4);
+			ms.Write(BitConverter.GetBytes(vo.y), 0, 4);
+			ms.Write(BitConverter.GetBytes(vo.z), 0, 4);
+			return ms.ToArray();
+		}
 		
-		ms.Write(BitConverter.GetBytes(o.w), 0, 4);
-		ms.Write(BitConverter.GetBytes(o.x), 0, 4);
-		ms.Write(BitConverter.GetBytes(o.y), 0, 4);
-		ms.Write(BitConverter.GetBytes(o.z), 0, 4);
-		return ms.ToArray();
-	}
-	
-	public static object DeserializeQuaternion(byte[] bytes)
-	{
-		Quaternion o = new Quaternion();
-		o.w = BitConverter.ToSingle(bytes, 0);
-		o.x = BitConverter.ToSingle(bytes, 4);
-		o.y = BitConverter.ToSingle(bytes, 8);
-		o.z = BitConverter.ToSingle(bytes, 12);
+		private static object DeserializeVector3(byte[] bytes)
+		{
+			Vector3 vo = new Vector3();
+			vo.x = BitConverter.ToSingle(bytes, 0);
+			vo.y = BitConverter.ToSingle(bytes, 4);
+			vo.z = BitConverter.ToSingle(bytes, 8);
+			
+			return vo;
+		}
 		
-		return o;
+		private static byte[] SerializeVector2(object customobject)
+		{
+			Vector2 vo = (Vector2)customobject;
+			MemoryStream ms = new MemoryStream(2 * 4);
+			
+			ms.Write(BitConverter.GetBytes(vo.x), 0, 4);
+			ms.Write(BitConverter.GetBytes(vo.y), 0, 4);
+			return ms.ToArray();
+		}
+		
+		private static object DeserializeVector2(byte[] bytes)
+		{
+			Vector2 vo = new Vector2();
+			vo.x = BitConverter.ToSingle(bytes, 0);
+			vo.y = BitConverter.ToSingle(bytes, 4);
+			return vo;
+		}
+		public static byte[] SerializeQuaternion(object obj)
+		{
+			Quaternion o = (Quaternion)obj;
+			MemoryStream ms = new MemoryStream(3 * 4);
+			
+			ms.Write(BitConverter.GetBytes(o.w), 0, 4);
+			ms.Write(BitConverter.GetBytes(o.x), 0, 4);
+			ms.Write(BitConverter.GetBytes(o.y), 0, 4);
+			ms.Write(BitConverter.GetBytes(o.z), 0, 4);
+			return ms.ToArray();
+		}
+		
+		public static object DeserializeQuaternion(byte[] bytes)
+		{
+			Quaternion o = new Quaternion();
+			o.w = BitConverter.ToSingle(bytes, 0);
+			o.x = BitConverter.ToSingle(bytes, 4);
+			o.y = BitConverter.ToSingle(bytes, 8);
+			o.z = BitConverter.ToSingle(bytes, 12);
+			
+			return o;
+		}
+		
+		#endregion
 	}
-	
-	#endregion
 }

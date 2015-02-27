@@ -9,7 +9,7 @@ using HutongGames.PlayMaker.Photon.TurnBased;
 
 namespace HutongGames.PlayMaker.Actions
 {
-	[ActionCategory("Photon")]
+	[ActionCategory("Photon TurnBased")]
 	[Tooltip("Current Status Code this Peer. Careful: several states are 'transitions' that lead to other states.")]
 	//[HelpUrl("https://hutonggames.fogbugz.com/default.asp?W1107")]
 	public class PhotonTurnBasedGetStatusCode : FsmStateAction

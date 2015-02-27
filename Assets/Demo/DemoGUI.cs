@@ -118,6 +118,7 @@ public class DemoGUI : MonoBehaviour
             int actorNumber = savedRoom.Value;
             if (GUILayout.Button("ReJoin: " + roomName + " #" + actorNumber))
             {
+				Debug.Log("ReJoin: " + roomName + " #" + actorNumber);
                 this.GameInstance.OpJoinRoom(roomName, actorNumber);
             }
         }

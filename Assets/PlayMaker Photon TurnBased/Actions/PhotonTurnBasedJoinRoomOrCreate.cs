@@ -9,7 +9,7 @@ using HutongGames.PlayMaker.Photon.TurnBased;
 
 namespace HutongGames.PlayMaker.Actions
 {
-	[ActionCategory("Photon")]
+	[ActionCategory("Photon TurnBased")]
 	[Tooltip("Call the TurnBased Cloud Server to join a room by name or creates new room if room with given name not exists." +
 	         "Join will try to enter a room by roomName. Unlike OpJoinRoom, this will create the room if it doesn't exist." +
 		"This is an async request which will triggers 'PHOTON TURNBASED / XXX' events ")]

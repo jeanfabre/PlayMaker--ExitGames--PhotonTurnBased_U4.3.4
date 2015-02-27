@@ -22,7 +22,21 @@ namespace HutongGames.PlayMaker.Photon.TurnBased
 	public class PlayMakerPhotonLoadBalancingClient : LoadBalancingClient
 	{
 		#region Action Delegates
+		/// <summary>
+		/// Use this Action to be informed when the GameList is received
+		/// </summary>
 		public Action 						OnGameListReceivedAction		{ get; set; }
+
+		/// <summary>
+		/// Use this Action to be informed when joining a game Operation got a response 
+		/// </summary>
+		public Action<short> 			OnJoinGameResponseAction		{ get; set; }
+
+		/// <summary>
+		/// Use this Action to be informed when joining a random game Operation got a response 
+		/// </summary>
+		public Action<short> 			OnJoinRandomGameResponseAction		{ get; set; }
+
 		public Action<StatusCode> 			OnStatusChangedAction			{ get; set; }
 		//public Action<DebugLevel, string> 	OnDebugReturnAction				{ get; set; }
 		//public Action<OperationResponse> 	OnOperationResponseAction		{ get; set; }
@@ -48,7 +62,15 @@ namespace HutongGames.PlayMaker.Photon.TurnBased
 					this.OnWebRpcResponse(new WebRpcResponse(operationResponse));
 				}
 				break;
+
 			case (byte)OperationCode.JoinGame:
+				if(OnJoinGameResponseAction!=null)
+				{
+					DebugReturn(DebugLevel.INFO,"OnOperationResponse code:JoinGame calling Action:OnJoinGameResponseAction");
+					OnJoinGameResponseAction(operationResponse.ReturnCode);
+				}
+				break;
+
 			case (byte)OperationCode.CreateGame:
 				if (this.Server == ServerConnection.GameServer)
 				{
@@ -58,14 +80,14 @@ namespace HutongGames.PlayMaker.Photon.TurnBased
 					}
 				}
 				break;
+
 			case (byte)OperationCode.JoinRandomGame:
-				/* TODO
-				if (operationResponse.ReturnCode == ErrorCode.NoRandomMatchFound)
+
+				if(OnJoinRandomGameResponseAction!=null)
 				{
-					// no room found: we create one!
-					this.CreateTurnbasedRoom();
+					DebugReturn(DebugLevel.INFO,"OnOperationResponse code:JoinRandomGame calling Action:OnJoinRandomGameResponseAction");
+					OnJoinRandomGameResponseAction(operationResponse.ReturnCode);
 				}
-	*/
 				break;
 			}
 		}

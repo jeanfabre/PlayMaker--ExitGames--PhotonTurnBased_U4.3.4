@@ -13,6 +13,8 @@ using ExitGames.Client.Photon.LoadBalancing;
 
 using HutongGames.PlayMaker;
 
+using HutongGames.PlayMaker.Photon;
+
 namespace HutongGames.PlayMaker.Photon.TurnBased
 {
 	public class PlayMakerPhotonLoadBalancingClientProxy : MonoBehaviour
@@ -37,7 +39,7 @@ namespace HutongGames.PlayMaker.Photon.TurnBased
 
 			Application.runInBackground = true;
 
-			PlayMakerPhotonCustomTypes.Register();
+			CustomTypes.Register();
 		}
 
 		public void Update ()

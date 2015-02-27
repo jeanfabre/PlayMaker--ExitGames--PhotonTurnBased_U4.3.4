@@ -9,7 +9,7 @@ using HutongGames.PlayMaker.Photon.TurnBased;
 
 namespace HutongGames.PlayMaker.Actions
 {
-	[ActionCategory("Photon")]
+	[ActionCategory("Photon TurnBased")]
 	[Tooltip("Leave the room. This is an asynchronous operation.")]
 	//[HelpUrl("https://hutonggames.fogbugz.com/default.asp?W1107")]
 	public class PhotonTurnBasedLeaveRoom: FsmStateAction

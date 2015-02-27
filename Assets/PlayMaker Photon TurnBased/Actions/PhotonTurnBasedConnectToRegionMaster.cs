@@ -7,7 +7,7 @@ using HutongGames.PlayMaker.Photon.TurnBased;
 
 namespace HutongGames.PlayMaker.Actions
 {
-	[ActionCategory("Photon")]
+	[ActionCategory("Photon TurnBased")]
 	[Tooltip("Connect to the photon turnBased by region, port, appID and game(client) version")]
 	//[HelpUrl("https://hutonggames.fogbugz.com/default.asp?W1107")]
 	public class PhotonTurnBasedConnectToRegionMaster : FsmStateAction

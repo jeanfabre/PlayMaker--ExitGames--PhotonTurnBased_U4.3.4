@@ -23,7 +23,7 @@ namespace HutongGames.PlayMaker.Actions
 		public override void Reset()
 		{
 			roomsCount = null;
-			everyFrame = true;
+			everyFrame = false;
 		}
 		
 		public override void OnEnter()
@@ -43,7 +43,9 @@ namespace HutongGames.PlayMaker.Actions
 		
 		void getProperty()
 		{
-			roomsCount.Value =	PlayMakerPhotonLoadBalancingClientProxy.instance.LbcInstance.RoomsCount;
+			// TOWATCH: the latency of this variable is way more than the roomsList itself, maybe I should only get the count of the roomlist
+			//roomsCount.Value =	PlayMakerPhotonLoadBalancingClientProxy.instance.LbcInstance.RoomsCount;
+			roomsCount.Value =	PlayMakerPhotonLoadBalancingClientProxy.instance.LbcInstance.RoomInfoList.Count;
 			
 		}	
 	}

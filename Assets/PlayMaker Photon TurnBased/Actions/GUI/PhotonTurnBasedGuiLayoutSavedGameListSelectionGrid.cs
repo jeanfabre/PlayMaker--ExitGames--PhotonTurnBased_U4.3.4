@@ -1,17 +1,19 @@
 ﻿// (c) Copyright HutongGames, LLC 2010-2015. All rights reserved.
 
-using UnityEngine;
 using System.Collections.Generic;
 
+using UnityEngine; 
+
+using HutongGames.PlayMaker.Actions;
 using HutongGames.PlayMaker.Photon.TurnBased;
 
-namespace HutongGames.PlayMaker.Actions
+namespace HutongGames.PlayMaker.Photon.TurnBased.Actions
 {
 	[ActionCategory("Photon TurnBased")]
-	[Tooltip("GUILayout SelectionGRid listing Games.\n" +
+	[Tooltip("GUILayout SelectionGrid listing Saved Games.\n" +
 	         "The selection event int data contains the game index, and the event string data contains the selected game id")]
 	//[HelpUrl("https://hutonggames.fogbugz.com/default.asp?W901")]
-	public class PhotonTurnBasedGuiLayoutGameListSelectionGrid : GUILayoutAction
+	public class PhotonTurnBasedGuiLayoutSavedGameListSelectionGrid : GUILayoutAction
 	{
 		
 		//[Tooltip("If True, append to the room name the number of users against the maximum ( '--- 1/3' )")]
@@ -71,7 +73,6 @@ namespace HutongGames.PlayMaker.Actions
 
 			if (count==0)
 			{
-				GUIUtility.ExitGUI();
 				return;
 			}
 

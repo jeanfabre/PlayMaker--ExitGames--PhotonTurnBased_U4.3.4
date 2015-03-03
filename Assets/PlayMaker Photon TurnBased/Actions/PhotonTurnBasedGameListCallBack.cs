@@ -11,15 +11,16 @@ using HutongGames.PlayMaker.Photon.TurnBased;
 namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory("Photon TurnBased")]
-	[Tooltip("Call the TurnBased Cloud Server webhook 'GetGameList' to return the current list of saved games. This is an asynchronous operation.")]
+	[Tooltip("Register to the 'GetGameList'responses. Use CallGetGameList action to call this function on the server. This is an asynchronous operation.")]
 	//[HelpUrl("https://hutonggames.fogbugz.com/default.asp?W1107")]
-	public class PhotonTurnBasedCallGetGameList : FsmStateAction
+	public class PhotonTurnBasedGetGameListCallBack : FsmStateAction
 	{
 		[Tooltip("The list of game id")]
 		[UIHint(UIHint.Variable)]
 		[ArrayEditorAttribute(VariableType.String)]
 		public FsmArray gameIdList;
 
+		[Tooltip("The list of PlayerId/ActorNumber")]
 		[UIHint(UIHint.Variable)]
 		[ArrayEditorAttribute(VariableType.Int)]
 		public FsmArray ActorNrList;
@@ -44,9 +45,6 @@ namespace HutongGames.PlayMaker.Actions
 
 		public override void OnEnter()
 		{
-
-			PlayMakerPhotonLoadBalancingClientProxy.instance.LbcInstance.OpWebRpc("GetGameList", new Dictionary<string, object>());
-
 			PlayMakerPhotonLoadBalancingClientProxy.instance.LbcInstance.OnGameListReceivedAction += OnGameListReceived;
 		}
 
@@ -61,7 +59,6 @@ namespace HutongGames.PlayMaker.Actions
 
 		void OnGameListReceived ()
 		{
-			Debug.Log("OnGameListReceived");
 
 			Dictionary<string, GameDescription> _list = PlayMakerPhotonLoadBalancingClientProxy.instance.LbcInstance.SavedGames;
 
@@ -77,6 +74,7 @@ namespace HutongGames.PlayMaker.Actions
 				ActorNrs[i] = (object)_item.Value.ActorNr;
 				i++;
 			}
+
 
 			if (!gameIdList.IsNone)
 			{

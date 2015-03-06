@@ -1,5 +1,8 @@
 ﻿// (c) Copyright HutongGames, LLC 2010-2015. All rights reserved.
 
+using System;
+using System.Text;
+
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -84,14 +87,11 @@ namespace HutongGames.PlayMaker.Photon.TurnBased.Actions
 
 				_label = _label.Replace("{RoomName}",_item.Key);
 
-				if (_info.CustomProperties!=null)
+				foreach(DictionaryEntry _prop in _info.CustomProperties)
 				{
-					foreach(DictionaryEntry _prop in _info.CustomProperties)
-					{
-
-						_label.Replace("{"+_prop.Key+"}",_prop.Value.ToString());
-					}
+					_label = _label.Replace("{"+_prop.Key+"}",_prop.Value.ToString());
 				}
+
 
 				_labels[i] = _label;
 				_keys[i] = _item.Key;

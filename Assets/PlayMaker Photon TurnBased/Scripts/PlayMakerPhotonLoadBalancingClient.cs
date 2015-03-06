@@ -133,7 +133,14 @@ namespace HutongGames.PlayMaker.Photon.TurnBased
 
 		private void OnWebRpcResponse(WebRpcResponse response)
 		{
+
 			DebugReturn(DebugLevel.INFO,"OnWebRpcResponse "+response.ReturnCode+ " " +response.Name);
+
+			if (response.ReturnCode != 0)
+			{
+				Debug.Log(response.ToStringFull());     // in an error case, it's often helpful to see the full response
+				return;
+			}
 
 			if (response.Name.Equals("GetGameList"))
 			{

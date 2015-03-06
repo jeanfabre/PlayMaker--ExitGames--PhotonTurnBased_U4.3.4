@@ -132,7 +132,7 @@ public class DemoGUI : MonoBehaviour
         GUILayout.Label("Rooms in lobby: " + this.GameInstance.RoomInfoList.Count);
         foreach (RoomInfo roomInfo in this.GameInstance.RoomInfoList.Values)
         {
-            if (GUILayout.Button(roomInfo.Name + " turn: " + roomInfo.CustomProperties["t#"]))
+			if (GUILayout.Button(roomInfo.Name + " turn: " + roomInfo.CustomProperties["t#"]+ " cp: " + roomInfo.CustomProperties.Count))
             {
                 this.GameInstance.OpJoinRoom(roomInfo.Name);
             }

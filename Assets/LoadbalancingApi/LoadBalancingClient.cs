@@ -1778,6 +1778,8 @@ namespace ExitGames.Client.Photon.LoadBalancing
         /// <remarks>This method is essential to update the internal state of a LoadBalancingClient. Overriding methods must call base.OnEvent.</remarks>
         public virtual void OnEvent(EventData photonEvent)
         {
+			UnityEngine.Debug.Log("OnEvent "+photonEvent.Code);
+
             switch (photonEvent.Code)
             {
                 case EventCode.GameList:
@@ -1787,9 +1789,8 @@ namespace ExitGames.Client.Photon.LoadBalancing
                         this.RoomInfoList = new Dictionary<string, RoomInfo>();
                     }
 
-					UnityEngine.Debug.Log("OnEvent");
-
                     Hashtable games = (Hashtable)photonEvent[ParameterCode.GameList];
+
                     foreach (string gameName in games.Keys)
                     {
                         RoomInfo game = new RoomInfo(gameName, (Hashtable)games[gameName]);
@@ -1802,6 +1803,7 @@ namespace ExitGames.Client.Photon.LoadBalancing
                             this.RoomInfoList[gameName] = game;
                         }
                     }
+
                     break;
 
                 case EventCode.Join:

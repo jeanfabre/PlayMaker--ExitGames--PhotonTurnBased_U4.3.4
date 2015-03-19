@@ -19,7 +19,6 @@ namespace HutongGames.PlayMaker.Photon.TurnBased.Actions
 	[Tooltip("GUILayout SelectionGrid listing Rooms In Lobby.\n" +
 	         "This list is populated while being in the lobby of the Master. It contains RoomInfo per roomName (keys)." +
 	         "The selection event int data contains the room index, and the event string data contains the selected game id")]
-	//[HelpUrl("https://hutonggames.fogbugz.com/default.asp?W901")]
 	public class PhotonTurnBasedGuiLayoutRoomsInLobbyListSelectionGrid : GUILayoutAction
 	{
 

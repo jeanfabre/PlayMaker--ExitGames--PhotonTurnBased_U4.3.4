@@ -9,7 +9,6 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory("Photon TurnBased")]
 	[Tooltip("Connect to the photon turnBased by region, port, appID and game(client) version")]
-	//[HelpUrl("https://hutonggames.fogbugz.com/default.asp?W1107")]
 	public class PhotonTurnBasedConnectToRegionMaster : FsmStateAction
 	{
 		[Tooltip("Your application ID (Photon Cloud provides you with a GUID for your game).")]

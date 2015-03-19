@@ -12,7 +12,6 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory("Photon TurnBased")]
 	[Tooltip("Call the TurnBased Cloud Server webhook 'GetGameList' to return the current list of saved games. This is an asynchronous operation.")]
-	//[HelpUrl("https://hutonggames.fogbugz.com/default.asp?W1107")]
 	public class PhotonTurnBasedCallGetGameList : FsmStateAction
 	{
 		[Tooltip("The list of game id")]

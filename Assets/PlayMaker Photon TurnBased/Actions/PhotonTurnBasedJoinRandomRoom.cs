@@ -18,7 +18,6 @@ namespace HutongGames.PlayMaker.Photon.TurnBased.Actions
 	         "If all rooms are closed or full, the OperationResponse will have a returnCode of ErrorCode.NoRandomMatchFound." +
 	         "If successful, the OperationResponse contains a gameserver address and the name of some room. " +
 	         "This is an async request which will triggers 'PHOTON TURNBASED / XXX' events ")]
-	//[HelpUrl("https://hutonggames.fogbugz.com/default.asp?W1107")]
 	public class PhotonTurnBasedJoinRandomRoom: FsmStateAction
 	{
 

@@ -10,7 +10,6 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory("Photon TurnBased")]
 	[Tooltip("Statistic value available on master server: Rooms count (Currently created).")]
-	//[HelpUrl("https://hutonggames.fogbugz.com/default.asp?W1107")]
 	public class PhotonTurnBasedGetRoomsCount : FsmStateAction
 	{
 		

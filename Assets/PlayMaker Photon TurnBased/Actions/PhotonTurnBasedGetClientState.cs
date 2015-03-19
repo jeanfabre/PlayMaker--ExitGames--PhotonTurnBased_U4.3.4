@@ -12,7 +12,6 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory("Photon TurnBased")]
 	[Tooltip("Current state this client is in. Careful: several states are 'transitions' that lead to other states.")]
-	//[HelpUrl("https://hutonggames.fogbugz.com/default.asp?W1107")]
 	public class PhotonTurnBasedGetClientState : FsmStateAction
 	{
 		[RequiredField]

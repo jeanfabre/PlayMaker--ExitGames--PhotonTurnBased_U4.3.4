@@ -169,10 +169,11 @@ public class DemoGUI : MonoBehaviour
 
         GUILayout.Space(15);
 
+		//FSM: game specific, no need to implemented
         GUILayout.Label("Save the board by ending the turn.");
         if (GUILayout.Button("End Turn " + this.GameInstance.turnNumber + " (Save)"))
         {
-            this.GameInstance.SaveBoardAsProperty();
+            this.GameInstance.SaveBoardAsProperty(); 
         }
 
         GUILayout.Space(15);

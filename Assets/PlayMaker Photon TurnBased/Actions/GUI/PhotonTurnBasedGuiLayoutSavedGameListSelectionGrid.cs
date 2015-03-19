@@ -12,7 +12,6 @@ namespace HutongGames.PlayMaker.Photon.TurnBased.Actions
 	[ActionCategory("Photon TurnBased")]
 	[Tooltip("GUILayout SelectionGrid listing Saved Games.\n" +
 	         "The selection event int data contains the game index, and the event string data contains the selected game id")]
-	//[HelpUrl("https://hutonggames.fogbugz.com/default.asp?W901")]
 	public class PhotonTurnBasedGuiLayoutSavedGameListSelectionGrid : GUILayoutAction
 	{
 		

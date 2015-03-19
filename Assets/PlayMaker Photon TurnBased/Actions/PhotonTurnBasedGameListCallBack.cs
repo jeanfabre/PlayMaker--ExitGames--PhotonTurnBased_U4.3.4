@@ -12,7 +12,6 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory("Photon TurnBased")]
 	[Tooltip("Register to the 'GetGameList'responses. Use CallGetGameList action to call this function on the server. This is an asynchronous operation.")]
-	//[HelpUrl("https://hutonggames.fogbugz.com/default.asp?W1107")]
 	public class PhotonTurnBasedGetGameListCallBack : FsmStateAction
 	{
 		[Tooltip("The list of game id")]

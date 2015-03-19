@@ -10,7 +10,6 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory("Photon TurnBased")]
 	[Tooltip("Statistic value available on master server: Players on Master (Looking for Games).")]
-	//[HelpUrl("https://hutonggames.fogbugz.com/default.asp?W1107")]
 	public class PhotonTurnBasedGetPlayersOnMasterCount : FsmStateAction
 	{
 		

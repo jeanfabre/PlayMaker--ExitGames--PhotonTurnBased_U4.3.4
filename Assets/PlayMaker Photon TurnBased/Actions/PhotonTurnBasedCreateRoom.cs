@@ -11,7 +11,6 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory("Photon TurnBased")]
 	[Tooltip("Call the TurnBased Cloud Server to creates a new room on the server (or fails if the name is already taken). This is an async request which will triggers 'PHOTON TURNBASED / XXX' events ")]
-	//[HelpUrl("https://hutonggames.fogbugz.com/default.asp?W1107")]
 	public class PhotonTurnBasedCreateRoom: FsmStateAction
 	{
 

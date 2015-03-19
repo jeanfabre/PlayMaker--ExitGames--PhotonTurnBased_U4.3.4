@@ -68,6 +68,7 @@ namespace HutongGames.PlayMaker.Actions
 		[Tooltip("Event fired if we are not in a room.")]
 		public FsmEvent notInRoomEvent;
 
+		[Tooltip("Update defined values every frame")]
 		public bool everyFrame;
 		
 		public override void Reset()

@@ -1780,6 +1780,7 @@ namespace ExitGames.Client.Photon.LoadBalancing
         {
 			UnityEngine.Debug.Log("OnEvent "+photonEvent.Code);
 
+
             switch (photonEvent.Code)
             {
                 case EventCode.GameList:

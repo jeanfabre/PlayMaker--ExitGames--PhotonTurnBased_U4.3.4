@@ -111,6 +111,13 @@ namespace HutongGames.PlayMaker.Photon.TurnBased
 				}
 				break;
 			}
+
+			if(OnEventAction!=null)
+			{
+				DebugReturn(DebugLevel.INFO,"Calling Action:OnEventAction EventCode: "+photonEvent.Code);
+
+				OnEventAction(photonEvent);
+			}
 		}
 		
 		public override void DebugReturn(DebugLevel level, string message)

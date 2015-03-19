@@ -32,6 +32,11 @@ namespace HutongGames.PlayMaker.Photon.TurnBased
 
 		public StatusCode statusCode;
 
+		/// <summary>
+		/// The last event data received. Use with "PhotonTurnBasedGetLastEventData" action
+		/// </summary>
+		public static EventData lastEventData;
+
 		#region MONO BEHAVIOR CALLS
 		void Start()
 		{
@@ -76,6 +81,11 @@ namespace HutongGames.PlayMaker.Photon.TurnBased
 		private void OnEvent(EventData eventData)
 		{
 			Debug.Log("OnEvent ->"+eventData.ToStringFull());
+
+
+			// broadcast PlayMaker Event defined for this eventCode
+
+
 		}
 
 		private void OnStateChanged (ClientState clientState)

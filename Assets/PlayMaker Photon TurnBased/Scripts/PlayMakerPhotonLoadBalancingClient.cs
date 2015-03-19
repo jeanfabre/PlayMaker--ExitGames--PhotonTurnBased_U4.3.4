@@ -12,6 +12,7 @@ using Random = UnityEngine.Random;
 
 namespace HutongGames.PlayMaker.Photon.TurnBased
 {
+
 	public class GameDescription
 	{
 		public string GameId;

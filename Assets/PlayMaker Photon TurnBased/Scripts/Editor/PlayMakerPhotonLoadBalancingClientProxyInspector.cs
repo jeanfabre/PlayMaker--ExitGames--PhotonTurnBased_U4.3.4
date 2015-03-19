@@ -4,30 +4,31 @@ using UnityEngine;
 using System.Collections;
 using UnityEditor;
 
-using HutongGames.PlayMaker.Photon.TurnBased;
+namespace HutongGames.PlayMaker.Photon.TurnBased
+{
+	[CustomEditor(typeof(PlayMakerPhotonLoadBalancingClientProxy))]
+	public class PlayMakerPhotonLoadBalancingClientProxyInspector : UnityEditor.Editor {
 
-[CustomEditor(typeof(PlayMakerPhotonLoadBalancingClientProxy))]
-public class PlayMakerPhotonLoadBalancingClientProxyInspector : Editor {
-
-	PlayMakerPhotonLoadBalancingClientProxy _target;
+		PlayMakerPhotonLoadBalancingClientProxy _target;
 
 
-	//GUILayoutOption[] GUILayoutOption_null =null;
+		//GUILayoutOption[] GUILayoutOption_null =null;
 
-	public override void OnInspectorGUI()
-	{
-		DrawDefaultInspector();
-		/*
-		if(_target==null)
+		public override void OnInspectorGUI()
 		{
-			_target = (PlayMakerPhotonLoadBalancingClientProxy)target;
+			DrawDefaultInspector();
+			/*
+			if(_target==null)
+			{
+				_target = (PlayMakerPhotonLoadBalancingClientProxy)target;
+			}
+
+			//"59b9d56e-198e-4ce3-bcbd-14d2df422b74"
+
+			_target.appId = EditorGUILayout.TextField("appId",_target.appId);
+			_target.appVersion = EditorGUILayout.TextField("appVersion",_target.appVersion);
+			EditorGUILayout.LabelField("state",_target.state,GUILayoutOption_null);
+	*/
 		}
-
-		//"59b9d56e-198e-4ce3-bcbd-14d2df422b74"
-
-		_target.appId = EditorGUILayout.TextField("appId",_target.appId);
-		_target.appVersion = EditorGUILayout.TextField("appVersion",_target.appVersion);
-		EditorGUILayout.LabelField("state",_target.state,GUILayoutOption_null);
-*/
 	}
 }

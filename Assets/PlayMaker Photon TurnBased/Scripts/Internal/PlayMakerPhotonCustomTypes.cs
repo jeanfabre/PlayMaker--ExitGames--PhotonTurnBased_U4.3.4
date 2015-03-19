@@ -18,6 +18,8 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 namespace HutongGames.PlayMaker.Photon
 {
+
+
 	public static class CustomTypes
 	{
 		

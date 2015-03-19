@@ -22,8 +22,15 @@ namespace HutongGames.PlayMaker.Photon.TurnBased
 		private static bool debug = false;
 
 		public static PlayMakerPhotonLoadBalancingClientProxy instance;
+		public static PlayMakerFSM Fsm;
 
 		public PlayMakerPhotonLoadBalancingClient LbcInstance;
+
+		/// <summary>
+		/// Register to this action to start working with the LoadBalancing system
+		/// </summary>>
+		public Action OnServiceStarted { get; set; }
+
 
 		public string appId ="Your AppID here";
 		public string appVersion = "1.0";
@@ -38,9 +45,14 @@ namespace HutongGames.PlayMaker.Photon.TurnBased
 		public static EventData lastEventData;
 
 		#region MONO BEHAVIOR CALLS
-		void Start()
+		void Awake()
 		{
 			instance = this;
+			Fsm = GetComponent<PlayMakerFSM>();
+		}
+
+		void Start()
+		{
 
 			Application.runInBackground = true;
 
@@ -73,19 +85,12 @@ namespace HutongGames.PlayMaker.Photon.TurnBased
 			LbcInstance = new PlayMakerPhotonLoadBalancingClient ();
 			LbcInstance.OnStateChangeAction += this.OnStateChanged;
 			LbcInstance.OnStatusChangedAction += this.OnStatusChanged;
-			LbcInstance.OnEventAction += this.OnEvent;
 
+			if (OnServiceStarted!=null)
+			{
+				OnServiceStarted();
+			}
 			return LbcInstance;
-		}
-
-		private void OnEvent(EventData eventData)
-		{
-			Debug.Log("OnEvent ->"+eventData.ToStringFull());
-
-
-			// broadcast PlayMaker Event defined for this eventCode
-
-
 		}
 
 		private void OnStateChanged (ClientState clientState)

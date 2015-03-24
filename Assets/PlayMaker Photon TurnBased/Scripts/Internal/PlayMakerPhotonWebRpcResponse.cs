@@ -1,10 +1,13 @@
-﻿using ExitGames.Client.Photon;
+﻿// Duplicated to prevent clash and provide a separated context
+
+using ExitGames.Client.Photon;
 using ExitGames.Client.Photon.LoadBalancing;
 using System.Collections.Generic;
 
-namespace ExitGames.Client.Photon
+//original namespace ExitGames.Client.Photon
+namespace HutongGames.PlayMaker.Photon
 {
-    class WebRpcResponsex
+    class WebRpcResponse
     {
         public string Name { get; private set; }
         /// <summary>-1 tells you: Got not ReturnCode from WebRpc service.</summary>
@@ -12,7 +15,7 @@ namespace ExitGames.Client.Photon
         public string DebugMessage { get; private set; }
         public Dictionary<string, object> Parameters { get; private set; }
 
-        public WebRpcResponsex(OperationResponse response)
+        public WebRpcResponse(OperationResponse response)
         {
             object value;
             response.Parameters.TryGetValue(ParameterCode.UriPath, out value);

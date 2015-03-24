@@ -10,6 +10,8 @@ using ExitGames.Client.Photon.LoadBalancing;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 using Random = UnityEngine.Random;
 
+using HutongGames.PlayMaker.Photon;
+
 namespace HutongGames.PlayMaker.Photon.TurnBased
 {
 

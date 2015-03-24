@@ -7,6 +7,7 @@ using UnityEngine;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 using Random = UnityEngine.Random;
 
+using HutongGames.PlayMaker.Photon;
 public class DemoGame : LoadBalancingClient
 {
     public string ErrorMessageToShow { get; set; }

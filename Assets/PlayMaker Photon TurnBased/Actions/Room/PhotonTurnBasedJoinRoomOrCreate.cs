@@ -128,8 +128,8 @@ namespace HutongGames.PlayMaker.Actions
 				MaxPlayers = (byte)maxNumberOfPLayers.Value,
 				CustomRoomProperties = _props,
 				CustomRoomPropertiesForLobby = lobbyProps,
-				EmptyRoomTtl = emptyRoomTtl.Value,
-				PlayerTtl = pttl,
+				EmptyRoomTtl = emptyRoomTtl.IsNone ? int.MaxValue/2:emptyRoomTtl.Value,
+				PlayerTtl = playerTtl.IsNone ? int.MaxValue:playerTtl.Value,
 				CheckUserOnJoin = checkUserOnJoin.Value,
 				CleanupCacheOnLeave = cleanupCacheOnLeave.Value
 			};

@@ -35,3 +35,5 @@ ProjectSettings
 Builds
 DemoScene ChronoRC.unity
 DemoScene ChronoRC.unity.meta
+PlayMaker.dll
+PlayMaker.dll.meta

@@ -4,3 +4,6 @@
 [submodule "Assets/PlayMaker Photon TurnBased"]
 	path = Assets/PlayMaker Photon TurnBased
 	url = https://jeanfabre@github.com/jeanfabre/PlayMaker--ExitGames--PhotonTurnBased_U4.3.4-SubModule-.git
+[submodule "Assets/PlayMaker ArrayMaker"]
+	path = Assets/PlayMaker ArrayMaker
+	url = https://jeanfabre@github.com/jeanfabre/PlayMaker--ArrayMaker--U4.3.4-SubModule-.git

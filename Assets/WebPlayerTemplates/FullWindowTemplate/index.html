@@ -1,12 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
  <html xmlns="http://www.w3.org/1999/xhtml">
      <head>
          <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-         <title>Photon Turnbased Demo</title>
-         <script type='text/javascript' src='jquery.min.js'></script>
+         <title>%UNITY_WEB_NAME%</title>
+         %UNITY_UNITYOBJECT_DEPENDENCIES%
          <script type="text/javascript">
          <!--
-         var unityObjectUrl = "UnityObject2.js";
+         var unityObjectUrl = "%UNITY_UNITYOBJECT_URL%";
          if (document.location.protocol == 'https:')
              unityObjectUrl = unityObjectUrl.replace("http://", "https://ssl-");
          document.write('<script type="text\/javascript" src="' + unityObjectUrl + '"><\/script>');
@@ -17,9 +17,9 @@
          var unityPlayerObject;
              jQuery(function() {
                  var config = {
-                     width: 600, 
-                     height: 450,
-                     params: { enableDebugging:"0" }
+                     width: %UNITY_WIDTH%, 
+                     height: %UNITY_HEIGHT%,
+                     params: %UNITY_PLAYER_PARAMS%
                  };
                  config.params["disableContextMenu"] = true;
                  var u = new UnityObject2(config);
@@ -56,7 +56,7 @@
                          break;
                      }
                  });
-                 u.initPlugin(jQuery("#unityPlayer")[0], "DemoScene_PM.unity3d");
+                 u.initPlugin(jQuery("#unityPlayer")[0], "%UNITY_WEB_PATH%");
                  unityPlayerObject = u;
                  ResizeUnity();
              });
@@ -71,7 +71,7 @@
                  unity.style.height = winHeight + "px";
              }
          }
-         var minWidth = 600, minHeight = 450;
+         var minWidth = %UNITY_WIDTH%, minHeight = %UNITY_HEIGHT%;
          var winWidth, winHeight;
          function GetWindowSize()
          {

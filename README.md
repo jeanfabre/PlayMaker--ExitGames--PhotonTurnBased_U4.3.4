@@ -11,6 +11,19 @@ This project is still an early alpha system, with much work left on the data man
 
 Please get in touch with me for requests and commments, and use Github to raise issues.
 
+## Demos
+
+You can find mac and web builds for both the original demo and the PlayMaker demo version. This allows for live testing, benchmarking and also testify of the compatibility between the PlayMaker demo version and the original version ( run the pm version and the original version, they will connect seamlessly)
+
+[Original Demo Web Player](http://htmlpreview.github.io/?https://raw.githubusercontent.com/jeanfabre/PlayMaker--ExitGames--PhotonTurnBased_U4.3.4/master/Builds/DemoScene/DemoScene.html)
+[PlayMaker Demo Web Player](http://htmlpreview.github.io/?https://raw.githubusercontent.com/jeanfabre/PlayMaker--ExitGames--PhotonTurnBased_U4.3.4/master/Builds/DemoScene_PM/DemoScene_PM.html)
+
+Warning: Some browsers don't support the Unity Web player anymore ( likey chrome), use Safari on mac ( not sure about explorer on Windows)
+
+You can find the Mac Apps on the Builds folder:
+
+[Original Demo Mac](https://github.com/jeanfabre/PlayMaker--ExitGames--PhotonTurnBased_U4.3.4/raw/master/Builds/DemoScene.app.zip)
+[PlayMaker Demo Mac](https://github.com/jeanfabre/PlayMaker--ExitGames--PhotonTurnBased_U4.3.4/raw/master/Builds/DemoScene_pm.app.zip)
 
 
 ##Notes for documentations
